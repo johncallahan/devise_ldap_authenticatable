@@ -184,7 +184,7 @@ module Devise
       # @return [Object] the LDAP entry found; nil if not found
       def search_for_login
         @login_ldap_entry ||= begin
-          DeviseLdapAuthenticatable::Logger.send("LDAP search for login: #{@attribute}=#{@login}")
+          DeviseLdapAuthenticatable::Logger.send("LDAP search for login: #{@attribute}=#{@login} (#{@search_base})")
           filter = Net::LDAP::Filter.eq(@attribute.to_s, @login.to_s)
           ldap_entry = nil
           match_count = 0
